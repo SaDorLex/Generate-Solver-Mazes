@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laberinto Principal</title>
+  <link rel="stylesheet" href="static/css/css-principal.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    {% include 'navegador.html' %}
+    <div style="display: flex;">
+        <div class="caja">
+            <div class="subtitulo" style="font-size: 20px;">
+                Busqueda por Algoritmo A*
+            </div>
+            {% if matriz is defined %}
+                {% for i in range(matriz|length) %}
+                <div class="box a_star">
+                    {% for j in range(matriz[0]|length) %}
+                        {% set posicion = (i,j) %}
+                        {% if matriz[i][j] == 0 %}
+                        <div class="box2" id="midiv" style="background-color:white; width: 10px; height: 10px;"></div>
+                        {% elif matriz[i][j] == 1 %}
+                        <div class="box2" id="midiv" style="background-color:yellow; width: 10px; height: 10px;"></div>
+                        {% elif matriz[i][j] == 2 %}
+                        <div class="box2" id="midiv" style="background-color:green; width: 10px; height: 10px;"></div>
+                        {% elif matriz[i][j] == 3 %}
+                        <div class="box2" id="midiv" style="background-color:black; width: 10px; height: 10px;"></div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                {% endfor %}
+            </form>
+            {% endif %}
+            {% if camino_a_star is defined %}
+                <input type="text" id="camino_a_star" style="display: none;" value="{{ camino_a_star }}">
+            {% endif %}
+            {% if path is defined %}
+                <input type="text" id="path" style="display: none;" value="{{ path }}">
+            {% endif %}
+            <div class="subtitulo" style="font-size: 20px; margin-top: 10px;">
+                Tiempo: <p id="tiempo_a_star"></p>
+            </div>
+        </div>
+        <div class="caja">
+            <div class="subtitulo" style="font-size: 20px;">
+                Algoritmo de Busqueda en Amplitud
+            </div>
+            {% if matriz is defined %}
+                {% for i in range(matriz|length) %}
+                <div class="box bfs">
+                    {% for j in range(matriz[0]|length) %}
+                        {% set posicion = (i,j) %}
+                        {% if matriz[i][j] == 0 %}
+                        <div class="box2" id="midiv" style="background-color:white; width: 10px; height: 10px;"></div>
+                        {% elif matriz[i][j] == 1 %}
+                        <div class="box2" id="midiv" style="background-color:yellow; width: 10px; height: 10px;"></div>
+                        {% elif matriz[i][j] == 2 %}
+                        <div class="box2" id="midiv" style="background-color:green; width: 10px; height: 10px;"></div>
+                        {% elif matriz[i][j] == 3 %}
+                        <div class="box2" id="midiv" style="background-color:black; width: 10px; height: 10px;"></div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                {% endfor %}
+            </form>
+            {% endif %}
+            {% if camino_bfs is defined %}
+                <input type="text" id="camino_bfs" style="display: none;" value="{{ camino_bfs }}">
+            {% endif %}
+            {% if path is defined %}
+                <input type="text" id="path" style="display: none;" value="{{ path }}">
+            {% endif %}
+            <div class="subtitulo" style="font-size: 20px; margin-top: 10px;">
+                Tiempo: <p id="tiempo_bfs"></p>
+            </div>
+        </div>
+        <div class="caja">
+            <div class="subtitulo" style="font-size: 20px;">
+                Algoritmo de Busqueda en Profundidad
+            </div>
+            {% if matriz is defined %}
+                {% for i in range(matriz|length) %}
+                <div class="box dfs">
+                    {% for j in range(matriz[0]|length) %}
+                        {% set posicion = (i,j) %}
+                        {% if matriz[i][j] == 0 %}
+                        <div class="box2" id="midiv" style="background-color:white; width: 10px; height: 10px;"></div>
+                        {% elif matriz[i][j] == 1 %}
+                        <div class="box2" id="midiv" style="background-color:yellow; width: 10px; height: 10px;"></div>
+                        {% elif matriz[i][j] == 2 %}
+                        <div class="box2" id="midiv" style="background-color:green; width: 10px; height: 10px;"></div>
+                        {% elif matriz[i][j] == 3 %}
+                        <div class="box2" id="midiv" style="background-color:black; width: 10px; height: 10px;"></div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                {% endfor %}
+            </form>
+            {% endif %}
+            {% if camino_dfs is defined %}
+                <input type="text" id="camino_dfs" style="display: none;" value="{{ camino_dfs }}">
+            {% endif %}
+            {% if path is defined %}
+                <input type="text" id="path" style="display: none;" value="{{ path }}">
+            {% endif %}
+            <div class="subtitulo" style="font-size: 20px; margin-top: 10px;">
+                Tiempo: <p id="tiempo_dfs"></p>
+            </div>
+        </div>
+    </div>
+    <script src="static/js/solver_all.js"></script>
+</body>
+</html>

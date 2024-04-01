@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laberinto Principal</title>
+  <link rel="stylesheet" href="static/css/css-principal.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    {% include 'navegador.html' %}
+    <div class="caja">
+        <div class="subtitulo">
+            Algoritmo de Kruskal
+        </div>
+        <form method="POST" enctype="multipart/form-data" action="/generar_maze_kruskal" autocomplete="off">
+            <div class="form_matriz">
+                <div class="division"><label>Filas:</label></div>
+                <div class="division"><input name="filas" type="number"></div>
+                <div class="division"><label>Columnas:</label></div>
+                <div class="division"><input name="columnas" type="number"></div>                
+            </div>
+            <input type="submit" class="boton" value="Generar" style="display: flex;">
+        </form>
+        {% if matriz is defined %}
+        <form method="POST" enctype="multipart/form-data" action="/resolver_maze" style="margin-top: 5%;">
+            
+            {% for i in matriz %}
+            <div class="box">
+                {% for j in i %}
+                    {% if j==0 %}
+                    <div class="box2" id="midiv" data-color="0" style="background-color:white;"></div>
+                    {% elif j==1 %}
+                    <div class="box2" id="midiv" data-color="1" style="background-color:yellow;"></div>
+                    {% elif j==2 %}
+                    <div class="box2" id="midiv" data-color="2" style="background-color:green;"></div>
+                    {% elif j==3 %}
+                    <div class="box2" id="midiv" data-color="3" style="background-color:black;"></div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            {% endfor %}
+            <input type="text" style="display: none;" value="{{ lab }}" name="lab">
+            <div class="final">
+                <input type="text" style="display: none;" value="{{ lab }}" name="lab">
+                <select class="contenedor" name="selected">
+                    <option value="dfs">Depth First Search</option>
+                    <option value="bfs">Breadth First Search</option>
+                    <option value="a-star">Busqueda por A*</option>
+                    <option value="comparar">Comparar Algoritmos</option>
+                </select>
+                <button class="boton resolver">Resolver</button>
+            </div>
+        </form>
+        <div class="subtitulo" style="font-size: 20px; margin-top: 10px;">
+            Tiempo: <p id="tiempo"></p>
+        </div>
+        {% endif %}
+        {% if camino is defined %}
+        <input type="text" style="display: none;" value="{{ camino }}" id="patron">
+        {% endif %}
+    </div>
+    <script src="static/js/principal.js"></script>
+</body>
+</html>
