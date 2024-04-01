@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laberinto Principal</title>
+  <link rel="stylesheet" href="static/css/css-principal.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    {% include 'navegador.html' %}
+    <div class="caja">
+        <div class="subtitulo">
+            Algoritmo de Busqueda en Amplitud
+        </div>
+        <div class="texto">
+            El algoritmo de Busqueda en Amplitud se utiliza en situaciones en las que necesitas encontrar la solución más corta a un problema en un grafo o estructura similar
+        </div>
+        {% if matriz is defined %}
+        <form method="POST" enctype="multipart/form-data" action="/resolver_bfs" style="margin-top: 5%;">
+            <input type="hidden" name="filas" value="{{ filas }}">
+            <input type="hidden" name="columnas" value="{{ columnas }}">
+            {% for i in range(matriz|length) %}
+            <div class="box">
+                {% for j in range(matriz[0]|length) %}
+                    {% set posicion = (i,j) %}
+                    {% if matriz[i][j] == 0 %}
+                    <div class="box2" id="midiv" style="background-color:white;"></div>
+                    {% elif matriz[i][j] == 1 %}
+                    <div class="box2" id="midiv" style="background-color:yellow;"></div>
+                    {% elif matriz[i][j] == 2 %}
+                    <div class="box2" id="midiv" style="background-color:green;"></div>
+                    {% elif matriz[i][j] == 3 %}
+                    <div class="box2" id="midiv" style="background-color:black;"></div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            {% endfor %}
+        </form>
+        {% else %}
+        <div class="texto">
+            Para poder ver como funciona este algoritmo, crea un laberinto desde las páginas de Algoritmos de Generación!!!
+        </div>
+        {% endif %}
+        {% if camino is defined %}
+            <input type="text" id="camino" style="display: none;" value="{{ camino }}">
+        {% endif %}
+        {% if path is defined %}
+            <input type="text" id="path" style="display: none;" value="{{ path }}">
+        {% endif %}
+        <div class="subtitulo" style="font-size: 20px; margin-top: 10px;">
+            Tiempo: <p id="tiempo"></p>
+        </div>
+    </div>
+    <script src="static/js/solver.js"></script>
+</body>
+</html>

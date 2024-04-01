@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laberinto Principal</title>
+  <link rel="stylesheet" href="static/css/css-principal.css">
+  
+</head>
+<body>
+    <div class="caja">
+        {% for i in matriz %}
+        <div class="box">
+            {% for j in i %}
+                {% if j==0 %}
+                <div class="box2" id="midiv" style="background-color:black;"></div>
+                {% elif j==1 %}
+                <div class="box2" id="midiv" style="background-color:white;"></div>
+                {% elif j==2 %}
+                <div class="box2" id="midiv" style="background-color:yellow;"></div>
+                {% elif j==3 %}
+                <div class="box2" id="midiv" style="background-color:green;"></div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        {% endfor %}
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laberinto Principal</title>
+  <link rel="stylesheet" href="static/css/css-principal.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div>
+        <div class="titulo">
+            Maze Genius: Crea, Transforma, Juega!
+        </div>
+        <div class="navegador">
+            <ul>
+                <li>
+                    <a>Algoritmos de Generación</a>
+                    <ul>
+                        <li>
+                            <a href="{{ url_for('generador_dfs') }}">Depth First Search (DFS)</a>
+                        </li>
+                        <li>
+                            <a href="{{ url_for('generador_kruskal') }}">Algoritmo de Kruskal</a>
+                        </li>
+                        <li>
+                            <a href="{{ url_for('generador_prims') }}">Algoritmo de Prim's</a>
+                        </li>
+                        <li>
+                            <a href="{{ url_for('generador_abbr') }}">Algoritmo Aldous Broder</a>
+                        </li>
+                        <li>
+                            <a href=#>Comparación de los Algoritmos</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a>Algoritmos de Resolución</a>
+                    <ul>
+                        <li>
+                            <a href="{{ url_for('solver_dfs') }}">Depth First Search (DFS)</a>
+                        </li>
+                        <li>
+                            <a href="{{ url_for('solver_bfs') }}">Breadth First Search (BFS)</a>
+                        </li>
+                        <li>
+                            <a href="{{ url_for('solver_a_star') }}">Algoritmo A*</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="">Crea tu Laberinto</a>
+                </li>
+                <li>
+                    <a href="">Sube tu Laberinto</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
